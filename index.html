@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "styles.css">
+    
+    <title>Asg2</title>
+</head>
+<body>
+    <header>
+        <div class="dropdown">
+            <button id = "creditButton" class = "dropbtn">Credit</button>
+            <div id="myDropdown" class = "dropDown-hidden">
+              <a href="#">Group names</a>
+              <a href="#">Github url link</a>
+            </div>
+          </div>
+    </header>
+    <div class = "basicSongSearch">
+        <form>
+            <input type="radio" name="basicSongSearchButton">
+            <label>Title</label>
+            <input type = "text" name = "titleText"><br>
+            
+            <input type="radio" name="basicSongSearchButton">
+            <label>Artist</label>
+            <input type = "text" name = "artistText"><br>
+
+            <input type="radio" name="basicSongSearchButton">
+            <label>Genre</label>
+            <input type = "text" name = "artistText"><br>
+
+            <input type="radio" name="basicSongSearchButton">
+            <label>Year</label>
+            <div>
+                <br>
+                <label>Less</label><input type="text" name="lessYearText">
+                <br>
+                <label>Greater</label><input type="text" name="GreaterYearText">
+            </div>
+
+            <input type="radio" name="basicSongSearchButton">
+            <label>Popularity</label>
+            <div>
+                <br>
+                <label>Less</label><input type="text" name="lessYearText">
+                <br>
+                <label>Greater</label><input type="text" name="GreaterYearText">
+            </div>
+        </form>
+        <button id = "clearButton">Clear</button>
+        <button id = "searchButton">Search</button>
+    </div>
+
+    <table class = "searchResults">
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Popularity</th>
+        </tr>
+    </table>
+    <div class="dropdown" id = "addBtn">
+        <button id = "addButton" class = "dropbtn">Add</button>
+        <div id="myDropdown" class = "dropDown-hidden">
+          <a href="#">Add to existing</a>
+          <a href="#">Add to new</a>
+        </div>
+
+
+    <script src="assign2.js" type="text/JavaScript"></script>
+</body>
+</html>
