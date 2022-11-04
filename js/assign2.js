@@ -13,22 +13,8 @@ const creditButton = document.querySelector("#creditButton");
 function creditButtonHandler()
 {
    let myDropdown = document.querySelector("#myDropdown");
-<<<<<<< HEAD:js/assign2.js
    myDropdown.classList.toggle("dropDown-hidden");
    myDropdown.classList.toggle("dropdown-content")
-=======
-   myDropdown.classList.remove("dropDown-hidden");
-   myDropdown.classList.add("dropdown-content")
-
-      if(myDropdown.style.display === "none")
-   {
-      myDropdown.style.display = "block";
-      myDropdown.style.position = "absolute";
-   }
-   else{
-      myDropdown.style.display = "none";
-   }
->>>>>>> fe936c2c6ec6d4e02623a848ca70b626684e12f1:assign2.js
 }
 
 creditButton.addEventListener("click", creditButtonHandler);
