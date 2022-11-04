@@ -13,8 +13,8 @@ const creditButton = document.querySelector("#creditButton");
 function creditButtonHandler()
 {
    let myDropdown = document.querySelector("#myDropdown");
-   myDropdown.classList.remove("dropDown-hidden");
-   myDropdown.classList.add("dropdown-content")
+   myDropdown.classList.toggle("dropDown-hidden");
+   myDropdown.classList.toggle("dropdown-content")
 }
 
 creditButton.addEventListener("click", creditButtonHandler);
@@ -39,8 +39,8 @@ const addButton = document.querySelector("#addButton");
 function addButtonHandler()
 {
    let myDropdown = document.querySelector("#addBtn #myDropdown");
-   myDropdown.classList.remove("dropDown-hidden");
-   myDropdown.classList.add("dropdown-content")
+   myDropdown.classList.toggle("dropDown-hidden");
+   myDropdown.classList.toggle("dropdown-content")
 }
 
 addButton.addEventListener("click", addButtonHandler);
