@@ -15,6 +15,15 @@ function creditButtonHandler()
    let myDropdown = document.querySelector("#myDropdown");
    myDropdown.classList.remove("dropDown-hidden");
    myDropdown.classList.add("dropdown-content")
+
+      if(myDropdown.style.display === "none")
+   {
+      myDropdown.style.display = "block";
+      myDropdown.style.position = "absolute";
+   }
+   else{
+      myDropdown.style.display = "none";
+   }
 }
 
 creditButton.addEventListener("click", creditButtonHandler);
@@ -22,7 +31,8 @@ creditButton.addEventListener("click", creditButtonHandler);
 const clearButton = document.querySelector("#clearButton");
 function clearButtonHandler()
 {
-   alert("Cleared!")
+   const texts = document.querySelectorAll("input[type=text]");
+   //clear textboxes here
 }
 
 clearButton.addEventListener("click", clearButtonHandler);
@@ -39,7 +49,14 @@ const addButton = document.querySelector("#addButton");
 function addButtonHandler()
 {
    let myDropdown = document.querySelector("#addBtn #myDropdown");
-   myDropdown.classList.remove("dropDown-hidden");
+   if(myDropdown.style.display === "none")
+   {
+      myDropdown.style.display = "block";
+      myDropdown.style.position = "absolute";
+   }
+   else{
+      myDropdown.style.display = "none";
+   }
    myDropdown.classList.add("dropdown-content")
 }
 

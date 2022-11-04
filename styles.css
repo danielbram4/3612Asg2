@@ -1,3 +1,4 @@
+/*Inspiration taken from https://www.w3schools.com/howto/howto_css_dropdown.asp*/
 /* Dropdown Button */
 .dropbtn {
     background-color: grey;
@@ -6,6 +7,7 @@
     font-size: 16px;
     border: none;
     margin-left: 100em;
+    border-radius: 25px;
     
   }
   
@@ -27,11 +29,13 @@
     text-decoration: none;
     display: block;
     margin-left: 100em;
+    border: 1px black solid;
 
   }
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
+
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
@@ -45,3 +49,4 @@
   .basicSongSearch{
     display:inline-block;
   }
+
