@@ -10,70 +10,107 @@
 </head>
 
 <body>
-    <div id = "searchBrowseSongsView">
-    <header>
-        <div class="dropdown">
-            <button id="creditButton" class="dropbtn">Credit</button>
-            <div id="myDropdown" class="dropDown-hidden">
-                <a href="#">Group names</a>
-                <a href="#">Github url link</a>
+    <div class= "" id="browseSongsView">
+        <header>
+            <nav>
+                <button id="playlistBtn" class="btn">Playlist</button>
+                <div class="dropdown">
+                    <button id="creditButton" class="btn">Credit</button>
+                    <div id="credit" class="dropDown-hidden">
+                        <a href="#">Group names</a>
+                        <a href="#">Github url link</a>
+                    </div>
+                </div>
+
+            </nav>
+
+        </header>
+        <div class="window">
+            <div class="sideBar" id="songSearch">
+                <form>
+                    <input type="radio" name="basicSongSearchButton" checked>
+                    <label>Title</label>
+                    <input type="text" name="titleText"><br>
+
+                    <input type="radio" name="basicSongSearchButton">
+                    <label>Artist</label>
+                    <input type="text" name="artistText"><br>
+
+                    <input type="radio" name="basicSongSearchButton">
+                    <label>Genre</label>
+                    <input type="text" name="artistText"><br>
+
+                    <button id="clearButton">Clear</button>
+                    <button id="searchButton">Search</button>
+                </form>
+            </div>
+            <div id="songTable">
+                <table class="songTable">
+                    <thead>
+                        <th>Title <img class="sortIcon" src="assets/images/sort-down-solid.svg"></th>
+                        <th>Artist <img class="sortIcon" src="assets/images/sort-down-solid.svg"></th>
+                        <th>Year <img class="sortIcon" src="assets/images/sort-down-solid.svg"></th>
+                        <th>Genre <img class="sortIcon" src="assets/images/sort-down-solid.svg"></th>
+                        <th>Popularity <img class="sortIcon" src="assets/images/sort-down-solid.svg"></th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </header>
-    <div class="basicSongSearch">
-        <form>
-            <input type="radio" name="basicSongSearchButton" checked>
-            <label>Title</label>
-            <input type="text" name="titleText"><br>
-
-            <input type="radio" name="basicSongSearchButton">
-            <label>Artist</label>
-            <input type="text" name="artistText"><br>
-
-            <input type="radio" name="basicSongSearchButton">
-            <label>Genre</label>
-            <input type="text" name="artistText"><br>
-
-            <input type="radio" name="basicSongSearchButton">
-            <label>Year</label>
-            <div>
-                <br>
-                <label>Less</label><input type="text" name="lessYearText">
-                <br>
-                <label>Greater</label><input type="text" name="GreaterYearText">
-            </div>
-
-            <input type="radio" name="basicSongSearchButton">
-            <label>Popularity</label>
-            <div>
-                <br>
-                <label>Less</label><input type="text" name="lessYearText">
-                <br>
-                <label>Greater</label><input type="text" name="GreaterYearText">
-            </div>
-        </form>
-        <button id="clearButton">Clear</button>
-        <button id="searchButton">Search</button>
+        <footer>
+        </footer>
     </div>
 
-    <table class="searchResults">
-        <th>Title</th>
-        <th>Artist</th>
-        <th>Year</th>
-        <th>Genre</th>
-        <th>Popularity</th>
-        </tr>
-    </table>
-    <div class="dropdown" id="addBtn">
-        <button id="addButton" class="dropbtn">Add</button>
-        <div id="myDropdown" class="dropDown-hidden">
-            <a href="#">Add to existing</a>
-            <a href="#">Add to new</a>
+    <div class = "hide" id="singleSongView">
+        <header>
+            <nav>
+                <button id="close">Close View</button>
+                <div class="dropdown">
+                    <button id="creditButton" class="btn">Credit</button>
+                    <div id="credit" class="dropDown-hidden">
+                        <a href="#">Group names</a>
+                        <a href="#">Github url link</a>
+                    </div>
+                </div>
+
+            </nav>
+        </header>
+        <div class="window">
+            <div class="sideBar" id="songInfo">
+                <h2>Song Info</h2>
+                <p>title, artist name, artist type, genre, year, duration</p>
+                <p>Analysis Data:
+                    <ul>
+                        <li>bpm</li>
+                        <li>energy</li>
+                        <li>danceability</li>
+                        <li>liveness</li>
+                        <li>valence</li>
+                        <li>acousticness</li>
+                        <li>speechiness</li>
+                        <li>popularity</li>
+                    </ul>
+                </p>
+
+            </div>
+            <div id = "radarChart">
+                <h2>Radar Chart</h2>
+
+            </div>
+
+            <footer>
+
+            </footer>
         </div>
 
-        <script src="js/assign2.js" type="text/JavaScript"></script>
-        <script src="js//modules/dbManager.js" type="module"></script>
 
+    </div>
+
+
+
+    <script src="js/assign2.js" type="text/JavaScript"></script>
+    <!-- <script src="js/modules/dbManager.js" type="text/JavaScript"></script> -->
 </body>
 
 </html>

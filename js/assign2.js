@@ -1,4 +1,140 @@
-/* url of song api --- https versions hopefully a little later this semester */	
+const songs = [{
+   "song_id": 1167,
+   "title": "Alarm",
+   "year": 2016,
+   "artist": {
+      "id": 9,
+      "name": "Anne-Marie"
+   },
+   "genre": {
+      "id": 110,
+      "name": "dance pop"
+   },
+   "details": {
+      "duration": 206,
+      "bpm": 147,
+      "popularity": 62,
+      "loudness": -5
+   },
+   "analytics": {
+      "energy": 59,
+      "danceability": 76,
+      "liveness": 18,
+      "valence": 81,
+      "acousticness": 8,
+      "speechiness": 23
+   }
+},
+{
+   "song_id": 1168,
+   "title": "Into You",
+   "year": 2016,
+   "artist": {
+      "id": 11,
+      "name": "Ariana Grande"
+   },
+   "genre": {
+      "id": 110,
+      "name": "dance pop"
+   },
+   "details": {
+      "duration": 244,
+      "bpm": 108,
+      "popularity": 73,
+      "loudness": -6
+   },
+   "analytics": {
+      "energy": 73,
+      "danceability": 62,
+      "liveness": 14,
+      "valence": 37,
+      "acousticness": 2,
+      "speechiness": 11
+   }
+},
+{
+   "song_id": 1169,
+   "title": "Side To Side",
+   "year": 2016,
+   "artist": {
+      "id": 11,
+      "name": "Ariana Grande"
+   },
+   "genre": {
+      "id": 110,
+      "name": "dance pop"
+   },
+   "details": {
+      "duration": 226,
+      "bpm": 159,
+      "popularity": 72,
+      "loudness": -6
+   },
+   "analytics": {
+      "energy": 74,
+      "danceability": 65,
+      "liveness": 24,
+      "valence": 61,
+      "acousticness": 5,
+      "speechiness": 23
+   }
+},
+{
+   "song_id": 1170,
+   "title": "Dangerous Woman",
+   "year": 2016,
+   "artist": {
+      "id": 11,
+      "name": "Ariana Grande"
+   },
+   "genre": {
+      "id": 110,
+      "name": "dance pop"
+   },
+   "details": {
+      "duration": 236,
+      "bpm": 134,
+      "popularity": 72,
+      "loudness": -5
+   },
+   "analytics": {
+      "energy": 60,
+      "danceability": 66,
+      "liveness": 36,
+      "valence": 29,
+      "acousticness": 5,
+      "speechiness": 4
+   }
+},
+{
+   "song_id": 1171,
+   "title": "Sorry",
+   "year": 2016,
+   "artist": {
+      "id": 17,
+      "name": "Beyoncé"
+   },
+   "genre": {
+      "id": 110,
+      "name": "dance pop"
+   },
+   "details": {
+      "duration": 233,
+      "bpm": 130,
+      "popularity": 72,
+      "loudness": -7
+   },
+   "analytics": {
+      "energy": 60,
+      "danceability": 78,
+      "liveness": 25,
+      "valence": 36,
+      "acousticness": 0,
+      "speechiness": 5
+   }
+}
+]
+/* url of song api --- https versions hopefully a little later this semester */
 const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php';
 
 
@@ -10,9 +146,8 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
 
 
 const creditButton = document.querySelector("#creditButton");
-function creditButtonHandler()
-{
-   let myDropdown = document.querySelector("#myDropdown");
+function creditButtonHandler() {
+   let myDropdown = document.querySelector("#x  ");
    myDropdown.classList.toggle("dropDown-hidden");
    myDropdown.classList.toggle("dropdown-content")
 }
@@ -20,8 +155,7 @@ function creditButtonHandler()
 creditButton.addEventListener("click", creditButtonHandler);
 
 const clearButton = document.querySelector("#clearButton");
-function clearButtonHandler()
-{
+function clearButtonHandler() {
    const texts = document.querySelectorAll("input[type=text]");
    //clear textboxes here
 }
@@ -29,20 +163,76 @@ function clearButtonHandler()
 clearButton.addEventListener("click", clearButtonHandler);
 
 const searchButton = document.querySelector("#searchButton");
-function searchButtonHandler()
-{
+function searchButtonHandler() {
    alert("Searched!")
 }
 
 searchButton.addEventListener("click", searchButtonHandler);
 
-const addButton = document.querySelector("#addButton");
-function addButtonHandler()
-{
-   let myDropdown = document.querySelector("#addBtn #myDropdown");
-   myDropdown.classList.toggle("dropDown-hidden");
-   myDropdown.classList.toggle("dropdown-content")
 
+function loadSongTable() {
+   const tBody = document.querySelector(".songTable")
+
+   for (let song of songs) {
+      const title = document.createElement("td")
+      title.setAttribute('id', song.song_id)
+      title.textContent = song.title
+
+      const artist = document.createElement("td")
+      artist.setAttribute('id', song.artist.id)
+      artist.textContent = song.artist.name
+
+      const year = document.createElement("td")
+      year.setAttribute('id', song.year)
+      year.textContent = song.year
+
+      const genre = document.createElement("td")
+      genre.setAttribute('id', song.genre.id)
+      genre.textContent = song.genre.name
+
+      const popularity = document.createElement("td")
+      popularity.setAttribute('id', song.details.popularity)
+      popularity.textContent = song.details.popularity
+
+      const addBtn = document.createElement("button")
+      addBtn.classList.add("btn")
+      addBtn.setAttribute('id', "addBtn")
+      addBtn.textContent = "Add"
+
+      const newRow = document.createElement("tr")
+      newRow.setAttribute('id', "tableRow")
+
+      newRow.appendChild(title)
+      newRow.appendChild(artist)
+      newRow.appendChild(year)
+      newRow.appendChild(genre)
+      newRow.appendChild(popularity)
+      newRow.appendChild(addBtn)
+
+      tBody.appendChild(newRow)
+   }
+
+   tBody.addEventListener('click', showSongDetails)
 }
 
-addButton.addEventListener("click", addButtonHandler);
+const browser = document.querySelector("#browseSongsView")
+const singleSongView = document.querySelector("#singleSongView")
+
+function showSongDetails(e) {
+   if (e.target && e.target.nodeName == "TD") {
+      browser.classList.add("hide")
+      singleSongView.classList.remove("hide")
+   }
+}
+
+const closeView = document.querySelector("#close")
+closeView.addEventListener('click', showBrowseSongsView)
+
+function showBrowseSongsView() {
+   browser.classList.remove("hide")
+   singleSongView.classList.add("hide")
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+   loadSongTable()
+})

@@ -1,6 +1,13 @@
 /*Inspiration taken from https://www.w3schools.com/howto/howto_css_dropdown.asp*/
 /* Dropdown Button */
-.dropbtn {
+body{
+  height: 600px;
+  width: 1400px;
+
+}
+
+/* 
+.btn {
     background-color: grey;
     color: white;
     padding: 16px;
@@ -8,9 +15,39 @@
     border: none;
     margin-left: 100em;
     border-radius: 25px;
+    display: inline;
     
+  } */
+
+.window{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  height:100%;
+  width:100%
+}
+
+.sideBar{
+  display:inline-block;
+  height:100%;
+  width:100%;
+  
+}
+.songTable{
+  display: inline-block;
+  height:100%;
+  width:100%;
+  
+}
+  .hide{
+    display:none;
   }
   
+  th img {
+    display:inline;
+    width:1em;
+    height:1em;
+  }
 
 .dropDown-hidden{
     display: none;
@@ -50,3 +87,7 @@
     display:inline-block;
   }
 
+#tableRow:hover{
+  background-color: lightgreen;
+
+}
