@@ -134,6 +134,64 @@ const songs = [{
    }
 }
 ]
+
+const playlist = [{
+   "song_id": 1170,
+   "title": "Dangerous Woman",
+   "year": 2016,
+   "artist": {
+      "id": 11,
+      "name": "Ariana Grande"
+   },
+   "genre": {
+      "id": 110,
+      "name": "dance pop"
+   },
+   "details": {
+      "duration": 236,
+      "bpm": 134,
+      "popularity": 72,
+      "loudness": -5
+   },
+   "analytics": {
+      "energy": 60,
+      "danceability": 66,
+      "liveness": 36,
+      "valence": 29,
+      "acousticness": 5,
+      "speechiness": 4
+   }
+},
+{
+   "song_id": 1171,
+   "title": "Sorry",
+   "year": 2016,
+   "artist": {
+      "id": 17,
+      "name": "Beyoncé"
+   },
+   "genre": {
+      "id": 110,
+      "name": "dance pop"
+   },
+   "details": {
+      "duration": 233,
+      "bpm": 130,
+      "popularity": 72,
+      "loudness": -7
+   },
+   "analytics": {
+      "energy": 60,
+      "danceability": 78,
+      "liveness": 25,
+      "valence": 36,
+      "acousticness": 0,
+      "speechiness": 5
+   }
+}
+
+
+]
 /* url of song api --- https versions hopefully a little later this semester */
 const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php';
 
@@ -143,6 +201,12 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
    Some possibilities: if using Visual Code, use Live Server extension; if Brackets,
    use built-in Live Preview.
 */
+
+const browser = document.querySelector("#browseSongsView")
+const singleSongView = document.querySelector("#singleSongView")
+const closeBtn = document.querySelector("#close")
+const playlistBtn = document.querySelector("#playlistBtn")
+const playlistView = document.querySelector("#playlistView")
 
 
 const creditButton = document.querySelector("#creditButton");
@@ -169,59 +233,100 @@ function searchButtonHandler() {
 
 searchButton.addEventListener("click", searchButtonHandler);
 
+function getTableData(song) {
+   const title = document.createElement("td")
+   title.setAttribute('id', song.song_id)
+   title.textContent = song.title
 
-function loadSongTable() {
-   const tBody = document.querySelector(".songTable")
+   const artist = document.createElement("td")
+   artist.setAttribute('id', song.artist.id)
+   artist.textContent = song.artist.name
 
-   for (let song of songs) {
-      const title = document.createElement("td")
-      title.setAttribute('id', song.song_id)
-      title.textContent = song.title
+   const year = document.createElement("td")
+   year.setAttribute('id', song.year)
+   year.textContent = song.year
 
-      const artist = document.createElement("td")
-      artist.setAttribute('id', song.artist.id)
-      artist.textContent = song.artist.name
+   const genre = document.createElement("td")
+   genre.setAttribute('id', song.genre.id)
+   genre.textContent = song.genre.name
 
-      const year = document.createElement("td")
-      year.setAttribute('id', song.year)
-      year.textContent = song.year
+   const popularity = document.createElement("td")
+   popularity.setAttribute('id', song.details.popularity)
+   popularity.textContent = song.details.popularity
 
-      const genre = document.createElement("td")
-      genre.setAttribute('id', song.genre.id)
-      genre.textContent = song.genre.name
-
-      const popularity = document.createElement("td")
-      popularity.setAttribute('id', song.details.popularity)
-      popularity.textContent = song.details.popularity
-
-      const addBtn = document.createElement("button")
-      addBtn.classList.add("btn")
-      addBtn.setAttribute('id', "addBtn")
-      addBtn.textContent = "Add"
-
-      const newRow = document.createElement("tr")
-      newRow.setAttribute('id', "tableRow")
-
-      newRow.appendChild(title)
-      newRow.appendChild(artist)
-      newRow.appendChild(year)
-      newRow.appendChild(genre)
-      newRow.appendChild(popularity)
-      newRow.appendChild(addBtn)
-
-      tBody.appendChild(newRow)
-   }
-
-   tBody.addEventListener('click', showSongDetails)
+   return { title, artist, year, genre, popularity }
 }
 
-const browser = document.querySelector("#browseSongsView")
-const singleSongView = document.querySelector("#singleSongView")
+function getAddBtn() {
+   const addBtn = document.createElement("button")
+   addBtn.classList.add("btn")
+   addBtn.setAttribute('id', "addBtn")
+   addBtn.textContent = "Add"
+
+   return addBtn
+}
+
+function getRemoveBtn() {
+   const removeBtn = document.createElement("button")
+   removeBtn.classList.add("btn")
+   removeBtn.setAttribute('id', "removeBtn")
+   removeBtn.textContent = "Remove"
+
+   return removeBtn
+}
+
+
+function loadTable(type) {
+   if (type == 'songs') {
+      const tBody = document.querySelector(".songTable tbody")
+
+      for (let song of songs) {
+         const tableData = getTableData(song)
+         const addBtn = getAddBtn()
+
+         const newRow = document.createElement("tr")
+         newRow.setAttribute('id', "tableRow")
+
+         newRow.appendChild(tableData.title)
+         newRow.appendChild(tableData.artist)
+         newRow.appendChild(tableData.year)
+         newRow.appendChild(tableData.genre)
+         newRow.appendChild(tableData.popularity)
+         newRow.appendChild(addBtn)
+
+         tBody.appendChild(newRow)
+      }
+
+      tBody.addEventListener('click', showSongDetails)
+   } else if (type == 'playlist') {
+      const tBody = document.querySelector("#playlistTable .songTable tbody")
+
+      for (let song of playlist) {
+         const tableData = getTableData(song)
+         const removeBtn = getRemoveBtn()
+
+         const newRow = document.createElement("tr")
+         newRow.setAttribute('id', "tableRow")
+
+         newRow.appendChild(tableData.title)
+         newRow.appendChild(tableData.artist)
+         newRow.appendChild(tableData.year)
+         newRow.appendChild(tableData.genre)
+         newRow.appendChild(tableData.popularity)
+         newRow.appendChild(removeBtn)
+
+         tBody.appendChild(newRow)
+      }
+   }
+}
 
 function showSongDetails(e) {
    if (e.target && e.target.nodeName == "TD") {
+      playlistBtn.classList.add("hide")
+      closeBtn.classList.remove("hide")
       browser.classList.add("hide")
       singleSongView.classList.remove("hide")
+
    }
 }
 
@@ -229,10 +334,24 @@ const closeView = document.querySelector("#close")
 closeView.addEventListener('click', showBrowseSongsView)
 
 function showBrowseSongsView() {
+   playlistBtn.classList.remove("hide")
+   closeBtn.classList.add("hide")
    browser.classList.remove("hide")
    singleSongView.classList.add("hide")
+   playlistView.classList.add("hide")
 }
 
+const playListBtn = document.querySelector("#playlistBtn")
+playListBtn.addEventListener('click', function (){
+   playlistBtn.classList.add("hide")
+   closeBtn.classList.remove("hide")
+   browser.classList.add("hide")
+   playlistView.classList.remove("hide")
+
+   loadTable("playlist")
+})
+
 document.addEventListener("DOMContentLoaded", function () {
-   loadSongTable()
+   loadTable("songs")
+
 })

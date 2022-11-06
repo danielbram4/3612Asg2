@@ -10,22 +10,22 @@
 </head>
 
 <body>
-    <div class= "" id="browseSongsView">
         <header>
+            <h1>Musicify</h1>
             <nav>
-                <button id="playlistBtn" class="btn">Playlist</button>
+                <button class="" id="playlistBtn">Playlist</button>
+                <button class="hide" id="close">Close View</button>
                 <div class="dropdown">
-                    <button id="creditButton" class="btn">Credit</button>
+                    <button id="creditButton">Credit</button>
                     <div id="credit" class="dropDown-hidden">
                         <a href="#">Group names</a>
                         <a href="#">Github url link</a>
                     </div>
                 </div>
-
             </nav>
 
         </header>
-        <div class="window">
+        <div class="window" id="browseSongsView">
             <div class="sideBar" id="songSearch">
                 <form>
                     <input type="radio" name="basicSongSearchButton" checked>
@@ -58,25 +58,8 @@
                 </table>
             </div>
         </div>
-        <footer>
-        </footer>
-    </div>
 
-    <div class = "hide" id="singleSongView">
-        <header>
-            <nav>
-                <button id="close">Close View</button>
-                <div class="dropdown">
-                    <button id="creditButton" class="btn">Credit</button>
-                    <div id="credit" class="dropDown-hidden">
-                        <a href="#">Group names</a>
-                        <a href="#">Github url link</a>
-                    </div>
-                </div>
-
-            </nav>
-        </header>
-        <div class="window">
+        <div class="window hide" id="singleSongView">
             <div class="sideBar" id="songInfo">
                 <h2>Song Info</h2>
                 <p>title, artist name, artist type, genre, year, duration</p>
@@ -98,14 +81,34 @@
                 <h2>Radar Chart</h2>
 
             </div>
-
-            <footer>
-
-            </footer>
         </div>
 
+        <div class="window hide" id="playlistView">
+            <div class="subHeader">
+                <h2>Playlist Details</h2>
+                <p>#songs, popularity ranking</p>
+                <button id="clearPlaylist">Clear Playlist</button>
+            </div>
+            <div id="playlistTable">
+                <table class="songTable">
+                    <thead>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Year</th>
+                        <th>Genre</th>
+                        <th>Popularity</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
-    </div>
+
+        </div>
+ 
+    <footer>
+
+    </footer>
 
 
 
