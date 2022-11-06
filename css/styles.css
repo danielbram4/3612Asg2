@@ -69,7 +69,7 @@ nav{
 
 .window {
   display: grid;
-  grid-template-columns: .5fr 1.5fr;
+  grid-template-columns: .27fr 1fr;
   grid-gap: 20px;
   height: 100%;
   width: 100%

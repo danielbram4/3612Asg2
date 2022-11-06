@@ -1599,6 +1599,24 @@ function removeAllChildNodes(parent) {
    }
 }
 
+const radios = document.querySelectorAll('input[type="radio"')
+const form = document.querySelector("form")
+form.addEventListener('click', function (e){
+   if(e.target && e.target.nodeName == "INPUT"){
+      for(let radio of radios){
+         const textBox = document.querySelector(`input[name="${radio.value}"`)
+         if(radio.checked){
+            console.log(textBox)
+            const disable = textBox.getAttribute("disabled")
+            textBox.removeAttribute("disabled")
+         } else {
+            textBox.setAttribute('disabled',"")
+         }
+      }
+   }
+
+})
+
 document.addEventListener("DOMContentLoaded", function () {
    loadTable("songs")
 

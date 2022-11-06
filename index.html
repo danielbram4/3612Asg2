@@ -31,17 +31,17 @@
     <div class="window" id="browseSongsView">
         <div class="sideBar" id="songSearch">
             <form>
-                <input type="radio" name="basicSongSearchButton" checked>
+                <input type="radio" name="basicSongSearchButton" value="title" checked>
                 <label>Title</label>
-                <input type="text" name="titleText"><br>
+                <input type="text" name="title" ><br>
 
-                <input type="radio" name="basicSongSearchButton">
+                <input type="radio" name="basicSongSearchButton" value="artist">
                 <label>Artist</label>
-                <input type="text" name="artistText"><br>
+                <input type="text" name="artist" disabled><br>
 
-                <input type="radio" name="basicSongSearchButton">
+                <input type="radio" name="basicSongSearchButton" value="genre">
                 <label>Genre</label>
-                <input type="text" name="artistText"><br>
+                <input type="text" name="genre" disabled><br>
 
                 <button id="clearButton">Clear</button>
                 <button id="searchButton">Search</button>
