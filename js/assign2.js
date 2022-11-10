@@ -1414,7 +1414,6 @@ const closeBtn = document.querySelector("#close")
 const playlistBtn = document.querySelector("#playlistBtn")
 const playlistView = document.querySelector("#playlistView")
 
-
 const creditButton = document.querySelector("#creditButton");
 function creditButtonHandler() {
    let myDropdown = document.querySelector("#x  ");
@@ -1442,22 +1441,28 @@ searchButton.addEventListener("click", searchButtonHandler);
 function getTableData(song) {
    const title = document.createElement("td")
    title.setAttribute('id', song.song_id)
+   title.setAttribute("data-song", song.song_id)
    title.textContent = song.title
+
 
    const artist = document.createElement("td")
    artist.setAttribute('id', song.artist.id)
+   artist.setAttribute("data-song", song.song_id)
    artist.textContent = song.artist.name
 
    const year = document.createElement("td")
    year.setAttribute('id', song.year)
+   year.setAttribute("data-song", song.song_id)
    year.textContent = song.year
 
    const genre = document.createElement("td")
    genre.setAttribute('id', song.genre.id)
+   genre.setAttribute("data-song", song.song_id)
    genre.textContent = song.genre.name
 
    const popularity = document.createElement("td")
    popularity.setAttribute('id', song.details.popularity)
+   popularity.setAttribute("data-song", song.song_id)
    popularity.textContent = song.details.popularity
 
    return { title, artist, year, genre, popularity }
@@ -1492,6 +1497,7 @@ function loadTable(type) {
 
          const newRow = document.createElement("tr")
          newRow.setAttribute('id', "tableRow")
+         newRow.setAttribute("data-song", song.song_id)
 
          newRow.appendChild(tableData.title)
          newRow.appendChild(tableData.artist)
@@ -1514,6 +1520,7 @@ function loadTable(type) {
 
          const newRow = document.createElement("tr")
          newRow.setAttribute('id', "tableRow")
+         
 
          newRow.appendChild(tableData.title)
          newRow.appendChild(tableData.artist)
@@ -1554,13 +1561,87 @@ function removeFromPlaylist(e){
 
 function showSongDetails(e) {
    if (e.target && e.target.nodeName == "TD") {
+
       playlistBtn.classList.add("hide")
       closeBtn.classList.remove("hide")
       browser.classList.add("hide")
       singleSongView.classList.remove("hide")
+      
 
+      const songId = e.target.getAttribute("data-song")
+      const song = songs.find(song => song.song_id == songId);
+
+      const bpm = document.querySelector("#songInfo ul #bpm")
+      bpm.textContent = "bpm: " + song.details.bpm;
+
+      const energy = document.querySelector("#songInfo ul #energy")
+      energy.textContent = "energy: " + song.analytics.energy;
+
+      const danceability = document.querySelector("#songInfo ul #danceability")
+      danceability.textContent = "danceability: " + song.analytics.danceability;
+
+      const liveness = document.querySelector("#songInfo ul #liveness")
+      liveness.textContent = "liveness: " + song.analytics.liveness;
+
+      const valence = document.querySelector("#songInfo ul #valence")
+      valence.textContent = "valence: " + song.analytics.valence;
+
+      const acousticness = document.querySelector("#songInfo ul #acousticness")
+      acousticness.textContent = "acousticness: " + song.analytics.acousticness;
+
+      const speechiness = document.querySelector("#songInfo ul #speechiness")
+      speechiness.textContent = "speechiness: " + song.analytics.speechiness;
+
+      const popularity = document.querySelector("#songInfo ul #popularity")
+      popularity.textContent = "popularity: " + song.details.popularity;
+
+      const songInfo = document.querySelector("#songInfo p")
+      let songMinutes = song.details.duration / 60;
+      songMinutes = Math.floor(songMinutes);
+      let songSeconds = song.details.duration % 60;
+      songInfo.textContent = `${song.title}, ${song.artist.name}, ${song.artist.id}, ${song.genre.name}, ${song.year}, ${songMinutes} minutes and ${songSeconds} seconds`;
+
+      const radar = document.querySelector("#radarChart")
+      radar.innerHTML = "";
+      const chart = document.querySelector("#myChart");
+      const canvas = document.createElement("canvas")
+      canvas.id = "myChart";
+      radar.appendChild(canvas);
+
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const myChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+              labels: ['danceability', 'energy', 'speechiness', 'acousticness', 'liveness', 'valence'],
+              datasets: [{
+                  label: 'Song Statistics',
+                  data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.analytics.acousticness, song.analytics.liveness, song.analytics.valence],
+                  backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                      'white'
+                  ],
+                  borderWidth: 2
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+      chart.appendChild(myChart);
    }
 }
+
 
 const closeView = document.querySelector("#close")
 closeView.addEventListener('click', showBrowseSongsView)
