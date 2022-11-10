@@ -1,0 +1,151 @@
+/*Inspiration taken from https://www.w3schools.com/howto/howto_css_dropdown.asp*/
+/* Dropdown Button */
+:root {
+  --primary: #001315;
+  --secondary: #003f59;
+  --tertiary: #ff8c50;
+  --accent1: #ffda5d;
+  --accent2: #ffffa1;
+}
+
+body {
+  height: 80vw;
+  width: 80vw;
+  background: rgb(0, 19, 21);
+  background: linear-gradient(273deg, rgba(0, 19, 21, 1) 0%, rgba(0, 63, 89, 1) 80%);
+  font-family: 'Roboto Mono', monospace;
+  color: var(--tertiary);
+}
+
+button {
+  background-color: var(--accent1);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+button:hover {
+  background-color: var(--accent2);
+  cursor: pointer;
+}
+
+header h1 {
+  display: inline;
+}
+
+header{
+  height:10%;
+}
+
+nav {
+  float: right;
+}
+
+.window {
+  display: grid;
+  grid-template-columns: .27fr 1fr;
+  grid-gap: 20px;
+  height: 100%;
+  width: 100%
+}
+
+.sideBar {
+  border: 2px solid var(--primary);
+  min-height: 100px;
+  max-height: 600px;
+  
+}
+
+table {
+  border: 2px solid var(--primary);
+  max-height: 600px;
+  position:relative;
+  overflow-y: scroll;
+}
+
+th {
+  width: 20%;
+  font-size: larger;
+  top: 5px;
+  position: sticky;
+}
+
+.songTable {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+
+}
+
+.hide {
+  display: none;
+}
+
+th img {
+  display: inline;
+  width: 1em;
+  height: 1em;
+}
+
+*/ .searchResults {
+  margin-left: 25em;
+  border-spacing: 3em;
+  display: inline-block;
+}
+
+.basicSongSearch {
+  display: inline-block;
+}
+
+#tableRow:hover {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+table::-webkit-scrollbar {
+  width: 10px;
+  /* width of the entire scrollbar */
+}
+
+table::-webkit-scrollbar-track {
+  background: var(--secondary);
+  /* color of the tracking area */
+}
+
+table::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+}
