@@ -9,7 +9,7 @@
 }
 
 body {
-  height: 80vw;
+  height: 45vw;
   width: 80vw;
   background: rgb(0, 19, 21);
   background: linear-gradient(273deg, rgba(0, 19, 21, 1) 0%, rgba(0, 63, 89, 1) 80%);
@@ -91,14 +91,18 @@ table {
   border: 2px solid var(--primary);
   max-height: 600px;
   position:relative;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
-th {
+table thead th {
   width: 20%;
   font-size: larger;
   top: 5px;
   position: sticky;
+}
+
+tBody{
+  padding-top: 20px;
 }
 
 .songTable {
