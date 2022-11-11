@@ -68,10 +68,10 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
 fetch(api)
    .then(resp => resp.json())
    .then(data =>{
-         localStorage.setItem("key", JSON.stringify(data))
+         localStorage.setItem("listOfSongs", JSON.stringify(data))
    })
 
-let songs = JSON.parse(localStorage.getItem("key"))
+let songs = JSON.parse(localStorage.getItem("listOfSongs"))
 loadTable('songs')
 const browser = document.querySelector("#browseSongsView")
 const singleSongView = document.querySelector("#singleSongView")
