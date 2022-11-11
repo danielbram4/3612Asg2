@@ -69,9 +69,8 @@ fetch(api)
    .then(resp => resp.json())
    .then(data =>{
          localStorage.setItem("listOfSongs", JSON.stringify(data))
-   })
 
-let songs = JSON.parse(localStorage.getItem("listOfSongs"))
+         let songs = JSON.parse(localStorage.getItem("listOfSongs"))
 loadTable('songs')
 const browser = document.querySelector("#browseSongsView")
 const singleSongView = document.querySelector("#singleSongView")
@@ -442,4 +441,7 @@ form.addEventListener('click', function (e){
    }
 
 })
+
+   })
+
 
