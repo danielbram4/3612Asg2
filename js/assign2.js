@@ -277,7 +277,7 @@ fetch(api)
          
                   tBody.appendChild(newRow)  
                }
-         
+               tBody.addEventListener('click', showSongDetails)
                tBody.addEventListener('click', removeFromPlaylist)
             }
          }
