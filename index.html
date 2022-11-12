@@ -33,19 +33,22 @@
             <form>
                 <input type="radio" name="basicSongSearchButton" value="title" checked>
                 <label>Title</label>
-                <input type="text" name="title"><br>
+                <input id="titleSearch" type="text" name="title"><br>
 
                 <input type="radio" name="basicSongSearchButton" value="artist">
                 <label>Artist</label>
-                <input type="text" name="artist" disabled><br>
-
+                <select id="artistSearch" name="artist" disabled></select><br>
+                
+                
                 <input type="radio" name="basicSongSearchButton" value="genre">
                 <label>Genre</label>
-                <input type="text" name="genre" disabled><br>
+                <select id="genreSearch" name="genre" disabled></select><br>
 
-                <button id="clearButton">Clear</button>
-                <button id="searchButton">Search</button>
+                
             </form>
+
+            <button id="clearButton">Clear</button>
+            <button id="searchButton">Search</button>
         </div>
         <div id="songTable">
             <table class="songTable">
@@ -70,20 +73,20 @@
             <p>title, artist name, artist type, genre, year, duration</p>
             <p>Analysis Data:
             <ul>
-                <li id = "bpm"></li>
-                <li id = "energy"></li>
-                <li id = "danceability"></li>
-                <li id = "liveness"></li>
-                <li id = "valence"></li>
-                <li id = "acousticness"></li>
-                <li id = "speechiness"></li>
-                <li id = "popularity"></li>
+                <li id="bpm"></li>
+                <li id="energy"></li>
+                <li id="danceability"></li>
+                <li id="liveness"></li>
+                <li id="valence"></li>
+                <li id="acousticness"></li>
+                <li id="speechiness"></li>
+                <li id="popularity"></li>
             </ul>
             </p>
 
         </div>
         <div id="radarChart">
-            
+
         </div>
     </div>
 
