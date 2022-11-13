@@ -71,7 +71,6 @@ let songJSON = localStorage.getItem("listOfSongs");
 let songs;
 if(songJSON){
    songs = JSON.parse(songJSON);
-   console.log("in local storage")
    mainProgram(songs)
 }else{
    fetch(api)
