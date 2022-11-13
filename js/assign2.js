@@ -90,6 +90,8 @@ fetch(api)
 
       loadGenreDropDown(genres)
       loadArtistDropDown(artists)
+      resetSearch()
+
 
       function loadGenreDropDown(genres) {
          const genreDropDown = document.querySelector("#genreSearch")
@@ -109,6 +111,8 @@ fetch(api)
             artistDropDown.appendChild(option)
          }
       }
+
+      
 
       function getGenres() {
          const genres = [];
@@ -220,27 +224,25 @@ fetch(api)
       creditButton.addEventListener("click", creditButtonHandler);
 
       const clearButton = document.querySelector("#clearButton");
-      function clearButtonHandler() {
+      function resetSearch() {
          loadTable('songs')
          const radios = document.querySelectorAll("input[name=basicSongSearchButton]")
          for (let radio of radios) {
             const textBox = document.querySelector(`#${radio.value}Search`)
             if(radio.value == 'title') {
+               radio.setAttribute("checked", "")
                textBox.removeAttribute("disabled")
                textBox.value = ""
             } else {
                textBox.setAttribute('disabled', "")
+               radio.checked == false
                textBox.selectedIndex = 0;
             }
-            
-            
-           
-            
          }
 
       }
 
-      clearButton.addEventListener("click", clearButtonHandler);
+      clearButton.addEventListener("click", resetSearch);
 
       const searchButton = document.querySelector("#searchButton");
 
@@ -530,15 +532,14 @@ fetch(api)
       const radios = document.querySelectorAll('input[type="radio"')
       const form = document.querySelector("form")
       form.addEventListener('click', function (e) {
-         loadTable('songs')
-         if (e.target && e.target.nodeName == "INPUT") {
+         if (e.target && e.target.getAttribute("type") == "radio") {
+            loadTable('songs')
             for (let radio of radios) {
                const textBox = document.querySelector(`#${radio.value}Search`)
                if (radio.checked) {
                   textBox.removeAttribute("disabled")
                } else {
                   textBox.setAttribute('disabled', "")
-                  // textBox.value = ""
                }
             }
          }
