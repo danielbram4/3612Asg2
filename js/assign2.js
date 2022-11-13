@@ -95,6 +95,9 @@ fetch(api)
       resetSearch()
 
 
+      /*
+         Loads the drop-down for the different set of genres needed to search.
+      */
       function loadGenreDropDown(genres) {
          const genreDropDown = document.querySelector("#genreSearch")
          for (let g of genres) {
@@ -104,6 +107,10 @@ fetch(api)
             genreDropDown.appendChild(option)
          }
       }
+
+      /*
+         Loads the drop-down for the different set of Artists needed to search.
+      */
       function loadArtistDropDown(artists) {
          const artistDropDown = document.querySelector("#artistSearch")
          for (let a of artists) {
@@ -115,7 +122,9 @@ fetch(api)
       }
 
 
-
+      /*
+         Returns array of genres.
+      */
       function getGenres() {
          const genres = [];
          for (let song of songs) {
@@ -125,7 +134,9 @@ fetch(api)
          genres.sort()
          return genres
       }
-
+      /*
+         Returns array of artists.
+      */
       function getArtists() {
          const artists = [];
          for (let song of songs) {
@@ -136,10 +147,11 @@ fetch(api)
          return artists
       }
 
-
-
       const sortTitle = document.querySelector("#sortIconTitle")
 
+      /*
+         Sets the icon arrow for the header row to point downwards, except for the header element selected.
+      */
       function setIcons(whichIcon) {
          const icons = document.querySelectorAll("#songTable img")
          const icon = document.querySelector(`#${whichIcon}`)
@@ -151,6 +163,9 @@ fetch(api)
 
       sortTitle.addEventListener("click", sortTitleHandler)
 
+      /*
+         Sorts the songs titles alphabetically.
+      */
       function sortTitleHandler() {
          setIcons("sortIconTitle")
          songs.sort(function (a, b) {
@@ -169,6 +184,10 @@ fetch(api)
 
       const sortArtist = document.querySelector("#sortIconArtist");
       sortArtist.addEventListener("click", sortArtistHandler)
+
+      /*
+         Sorts the songs artists alphabetically.
+      */
       function sortArtistHandler() {
          setIcons("sortIconArtist")
          songs.sort(function (a, b) {
@@ -188,6 +207,9 @@ fetch(api)
       const sortPop = document.querySelector("#sortIconPop")
       sortPop.addEventListener("click", sortPopHandler)
 
+      /*
+         Sorts the songs popularity numerically.
+      */
       function sortPopHandler() {
          setIcons("sortIconPop")
          songs.sort(function (a, b) {
@@ -202,6 +224,10 @@ fetch(api)
       const sortGenre = document.querySelector("#sortIconGenre")
       sortGenre.addEventListener("click", sortGenreHandler)
 
+
+       /*
+         Sorts the songs genres alphabetically.
+      */
       function sortGenreHandler() {
          setIcons("sortIconGenre")
          songs.sort(function (a, b) {
@@ -221,6 +247,10 @@ fetch(api)
 
       const sortYear = document.querySelector("#sortIconYear")
       sortYear.addEventListener("click", sortYearHandler)
+
+      /*
+         Sorts the songs year numerically.
+      */
       function sortYearHandler() {
          setIcons("sortIconYear")
          songs.sort(function (a, b) {
@@ -232,15 +262,23 @@ fetch(api)
       }
 
       const creditButton = document.querySelector("#creditButton");
+
+      /*
+         Makes it so that a mouseover on the credit button will show a dropdown menu.
+      */
       function creditButtonHandler() {
          let myDropdown = document.querySelector("#x  ");
          myDropdown.classList.toggle("dropDown-hidden");
          myDropdown.classList.toggle("dropdown-content")
       }
 
-      creditButton.addEventListener("click", creditButtonHandler);
+      creditButton.addEventListener("mouseover", creditButtonHandler);
 
       const clearButton = document.querySelector("#clearButton");
+
+      /*
+         Clears the textbox for title, and sets artist and genre to first option.
+      */
       function resetSearch() {
          loadTable('songs')
          const radios = document.querySelectorAll("input[name=basicSongSearchButton]")
@@ -263,6 +301,9 @@ fetch(api)
 
       const searchButton = document.querySelector("#searchButton");
 
+      /*
+         Checks which search method was selected and searches using that criteria.
+      */
       function searchButtonHandler() {
          const radios = document.querySelectorAll("input[name=basicSongSearchButton]")
          let searchType;
@@ -276,18 +317,26 @@ fetch(api)
          search(searchType, searchVal)
       }
 
-
+      /*
+         Searches for songs and stores them in results array.
+      */
       let results = [];
       function search(type, val) {
 
          results = type == 'title' ? songs.filter(song => String(song.title).includes(val)) : type == 'artist' ? songs.filter(song => song.artist.name == val) : songs.filter(song => song.genre.name == val)
 
-         console.log(results)
+         const icons = document.querySelectorAll("#songTable img")
+         for (let i of icons) {
+            i.src = "assets/images/sort-down-solid.svg"
+         }
          loadTable("search")
       }
 
       searchButton.addEventListener("click", searchButtonHandler);
 
+      /*
+         Sets table data for given song.
+      */
       function getTableData(song) {
          const title = document.createElement("td")
          title.setAttribute('id', song.song_id)
@@ -318,6 +367,9 @@ fetch(api)
          return { title, artist, year, genre, popularity }
       }
 
+      /*
+         Creates add button for Browse song view.
+      */
       function getAddBtn(song) {
          const addBtn = document.createElement("button")
          addBtn.classList.add("btn")
@@ -327,6 +379,9 @@ fetch(api)
          return addBtn
       }
 
+      /*
+         Creates remove button for playlist view.
+      */
       function getRemoveBtn(song) {
          const removeBtn = document.createElement("button")
          removeBtn.classList.add("btn")
@@ -336,7 +391,9 @@ fetch(api)
          return removeBtn
       }
 
-
+      /*
+         Loads list of songs for given circumstances, one for unfiltered songs, one for playlist view and one for searched song view.
+      */
       function loadTable(type) {
          if (type == 'songs') {
             const tBody = document.querySelector(".songTable tbody")
@@ -410,10 +467,16 @@ fetch(api)
          }
       }
 
+      /*
+         Song Search Function
+      */
       function getSong(songId) {
          return songs.find(song => song.song_id == songId)
       }
 
+      /*
+         Adds song to playlist if "Add" button was clicked
+      */
       function addToPlaylist(e) {
          if (e.target && e.target.nodeName == "BUTTON") {
             const songId = e.target.id
@@ -428,6 +491,9 @@ fetch(api)
          }
       }
 
+      /*
+         Removes a song from playlist.
+      */
       function removeFromPlaylist(e) {
          if (e.target && e.target.nodeName == "BUTTON") {
             const songId = e.target.id
@@ -454,6 +520,10 @@ fetch(api)
          }
       }
 
+      /*
+         Shows information for single song view, lists bpm,energy,danceability,liveness,valence, speechiness and popularity.
+         Also shows radar graph for song.
+      */
       function showSongDetails(e) {
          if (e.target && e.target.nodeName == "TD") {
 
@@ -495,50 +565,76 @@ fetch(api)
             songMinutes = Math.floor(songMinutes);
             let songSeconds = song.details.duration % 60;
             songInfo.textContent = `${song.title}, ${song.artist.name}, ${song.artist.id}, ${song.genre.name}, ${song.year}, ${songMinutes} minutes and ${songSeconds} seconds`;
+            createRadarGraph(song)
 
-            const radar = document.querySelector("#radarChart")
-            radar.innerHTML = "";
-            const canvas = document.createElement("canvas")
-            canvas.id = "myChart";
-            radar.appendChild(canvas);
-
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-               type: 'radar',
-               data: {
-                  labels: ['danceability', 'energy', 'speechiness', 'acousticness', 'liveness', 'valence'],
-                  datasets: [{
-                     label: 'Song Statistics',
-                     data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.analytics.acousticness, song.analytics.liveness, song.analytics.valence],
-                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                     ],
-                     borderColor: [
-                        'white'
-                     ],
-                     borderWidth: 2
-                  }]
-               },
-               options: {
-                  scales: {
-                     y: {
-                        beginAtZero: true
-                     }
-                  }
-               }
-            });
          }
       }
 
+      /*
+         Creates Radar Graph for given song.
+      */
+      function createRadarGraph(song){
+         const radar = document.querySelector("#radarChart")
+         radar.innerHTML = "";
+         const canvas = document.createElement("canvas")
+         canvas.id = "myChart";
+         radar.appendChild(canvas);
+
+         const ctx = document.getElementById('myChart').getContext('2d');
+         const myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+               labels: ['danceability', 'energy', 'speechiness', 'acousticness', 'liveness', 'valence'],
+               color: "white",
+               datasets: [{
+                  label: 'Song Statistics',
+                  data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.analytics.acousticness, song.analytics.liveness, song.analytics.valence],
+                  backgroundColor: [
+                     'rgba(#ff8c50, #ff8c50, #ff8c50, #ff8c50)',
+                     'rgba(255, 206, 86, 0.2)',
+                     'rgba(75, 192, 192, 0.2)',
+                     'rgba(153, 102, 255, 0.2)',
+                     'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                     'white'
+                  ],
+                  borderWidth: 1.2
+               }]
+            },
+            options: {
+               scales: {
+                  r: {        
+                     suggestedMin: 1,
+                     suggestedMax: 100,  
+                     ticks: {
+                     color: "#ff8c50"
+                     },
+                     angleLine: {
+                        color: "#ff8c50"
+                     },    
+                     grid: {
+                        color: "#ff8c50"
+                     },              
+                     pointLabels: {  
+                        color: "#ff8c50",
+                     font: {
+                       size: 15,
+                       
+                     }
+                     }
+                  }
+               }
+            }
+         });
+      }
 
       const closeView = document.querySelector("#close")
       closeView.addEventListener('click', showBrowseSongsView)
 
+      /*
+         Shows Browse Song page and hides other pages.
+      */
       function showBrowseSongsView() {
          playlistBtn.classList.remove("hide")
          closeBtn.classList.add("hide")
@@ -548,6 +644,10 @@ fetch(api)
       }
 
       const playListBtn = document.querySelector("#playlistBtn")
+
+      /*
+         Shows Playlist page and hides other pages.
+      */
       playListBtn.addEventListener('click', function () {
 
 
@@ -562,6 +662,9 @@ fetch(api)
       })
 
       const clearPlaylistBtn = document.querySelector("#clearPlaylist")
+      /*
+         Clears playlist if "Clear Playlist button" is clicked.
+      */
       clearPlaylistBtn.addEventListener('click', function () {
          while (playlist.length > 0) {
             playlist.pop()
@@ -571,6 +674,9 @@ fetch(api)
          loadTable('playlist')
       })
 
+      /*
+         Updates playlist after a song is removed.
+      */
       function updatePlaylistDetails() {
 
          const avgPopularity = document.querySelector("#playlistView li #avgPop")
@@ -583,6 +689,9 @@ fetch(api)
 
       const radios = document.querySelectorAll('input[type="radio"')
       const form = document.querySelector("form")
+      /*
+         Checks which search method was selected and enables it, while disabling other methods.
+      */
       form.addEventListener('click', function (e) {
          if (e.target && e.target.getAttribute("type") == "radio") {
             loadTable('songs')
