@@ -86,6 +86,7 @@ fetch(api)
       const playlistBtn = document.querySelector("#playlistBtn")
       const playlistView = document.querySelector("#playlistView")
 
+
       const genres = getGenres()
       const artists = getArtists()
 
@@ -113,7 +114,7 @@ fetch(api)
          }
       }
 
-      
+
 
       function getGenres() {
          const genres = [];
@@ -139,12 +140,12 @@ fetch(api)
 
       const sortTitle = document.querySelector("#sortIconTitle")
 
-      function setIcons(whichIcon){
+      function setIcons(whichIcon) {
          const icons = document.querySelectorAll("#songTable img")
          const icon = document.querySelector(`#${whichIcon}`)
-         for(let i of icons){
-               i.src = "assets/images/sort-down-solid.svg"
-            }
+         for (let i of icons) {
+            i.src = "assets/images/sort-down-solid.svg"
+         }
          icon.src = "assets/images/sort-up-solid.svg"
       }
 
@@ -245,8 +246,8 @@ fetch(api)
          const radios = document.querySelectorAll("input[name=basicSongSearchButton]")
          for (let radio of radios) {
             const textBox = document.querySelector(`#${radio.value}Search`)
-            if(radio.value == 'title') {
-               radio.setAttribute("checked", "")
+            if (radio.value == 'title') {
+               radio.checked = true
                textBox.removeAttribute("disabled")
                textBox.value = ""
             } else {
@@ -419,16 +420,37 @@ fetch(api)
             const song = getSong(songId)
             console.log(songId)
             playlist.push(song)
+
+            const snackbar = document.querySelector("#snackbar")
+            snackbar.className = "show"
+            setTimeout(function () { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+
          }
       }
 
       function removeFromPlaylist(e) {
          if (e.target && e.target.nodeName == "BUTTON") {
             const songId = e.target.id
-            const song = getSong(songId)
-            console.log(songId)
-            playlist.pop(song)
+            const index = playlist.findIndex(s => s.song_id == songId)
+            playlist.splice(index, 1)
+            updatePlaylistDetails()
             loadTable('playlist')
+         }
+      }
+
+      function getAveragePopularity() {
+         let sum = 0;
+         let avg;
+         for (let song of playlist) {
+            sum = sum + song.details.popularity
+         }
+
+         avg = Math.round(sum/playlist.length)
+
+         if(avg){
+            return avg
+         } else {
+            return 0
          }
       }
 
@@ -534,6 +556,8 @@ fetch(api)
          browser.classList.add("hide")
          playlistView.classList.remove("hide")
 
+         updatePlaylistDetails()
+
          loadTable("playlist")
       })
 
@@ -542,8 +566,20 @@ fetch(api)
          while (playlist.length > 0) {
             playlist.pop()
          }
+
+         updatePlaylistDetails()
          loadTable('playlist')
       })
+
+      function updatePlaylistDetails() {
+
+         const avgPopularity = document.querySelector("#playlistView li #avgPop")
+         const numSongs = document.querySelector("#playlistView li #numSongs")
+
+         avgPopularity.textContent = getAveragePopularity()
+         numSongs.textContent = playlist.length
+
+      }
 
       const radios = document.querySelectorAll('input[type="radio"')
       const form = document.querySelector("form")

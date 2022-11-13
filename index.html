@@ -31,7 +31,7 @@
     <div class="window" id="browseSongsView">
         <div class="sideBar" id="songSearch">
             <form>
-                <input type="radio" name="basicSongSearchButton" value="title">
+                <input type="radio" name="basicSongSearchButton" value="title" checked>
                 <label>Title</label>
                 <input id="titleSearch" type="text" name="title"><br>
 
@@ -55,6 +55,7 @@
                     <th>Year <img id="sortIconYear" src="assets/images/sort-down-solid.svg"></th>
                     <th>Genre <img id="sortIconGenre" src="assets/images/sort-down-solid.svg"></th>
                     <th>Popularity <img id="sortIconPop" src="assets/images/sort-down-solid.svg"></th>
+                    
                 </thead>
                 <div class="tBody">
                     <tbody>
@@ -90,7 +91,10 @@
     <div class="window hide" id="playlistView">
         <div class="subHeader">
             <h2>Playlist Details</h2>
-            <p>#songs, popularity ranking</p>
+            <ul>
+                <li>Number of Songs: <span id="numSongs"></span></li>
+                <li>Average Popularity: <span id="avgPop"></span></li>
+            </ul>
             <button id="clearPlaylist">Clear Playlist</button>
         </div>
         <div id="playlistTable">
@@ -110,14 +114,13 @@
 
     </div>
 
+    <div id="snackbar">Added to Playlist!</div>
+
     <footer>
 
     </footer>
 
-
-
     <script src="js/assign2.js" type="text/JavaScript"></script>
-    <!-- <script src="js/modules/dbManager.js" type="text/JavaScript"></script> -->
 </body>
 
 </html>
