@@ -4,22 +4,26 @@
   --primary: #001315;
   --secondary: #003f59;
   --tertiary: #ff8c50;
-  --accent1: #ffda5d;
-  --accent2: #ffffa1;
+  --accent1: #ff8f53;
+  --accent2: #faaa68;
+  --headers: #ff762d;
 }
 
 body {
   height: 45vw;
   width: 80vw;
-  background: rgb(0, 19, 21);
-  background: linear-gradient(273deg, rgba(0, 19, 21, 1) 0%, rgba(0, 63, 89, 1) 80%);
+  background: white;
   font-family: 'Roboto Mono', monospace;
   color: var(--tertiary);
 }
 
 button {
   background-color: var(--accent1);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   font-family: 'Roboto Mono', monospace;
+  padding: .75em 1em;
 }
 
 .dropdown {
@@ -64,6 +68,10 @@ header h1 {
   display: inline;
 }
 
+h1, h2{
+  color: var(--headers)
+}
+
 header{
   height:10%;
 }
@@ -73,43 +81,63 @@ nav {
 }
 
 .window {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   display: grid;
   grid-template-columns: .27fr 1fr;
   grid-gap: 20px;
-  height: 100%;
-  width: 100%
 }
 
 .sideBar {
-  border: 2px solid var(--primary);
-  min-height: 100px;
-  max-height: 600px;
-  
+  padding: 10px;
+  background: #003f59;
+  border-radius: 1%;
+  box-shadow: 0 3px 10px #001315;
+  min-height: 40rem;
+  max-height: 40rem;
+}
+
+.buttonBlock{
+  align-self: center  ;
+  margin-top: 400px;
 }
 
 table {
-  border: 2px solid var(--primary);
-  max-height: 600px;
-  position:relative;
+  border-radius: 1%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  min-height: 40rem;
+  max-height: 40rem;
+  position: relative;
   overflow-y: auto;
+  border-spacing: 0;
 }
 
 table thead th {
+  padding: 5px;
+  text-align: left;
+  box-shadow: 0 3px 10px -10px rgb(0 0 0 / 0.2);
+  opacity: 1;
+  background-color: white;
+  z-index: 1;
   width: 20%;
-  font-size: larger;
-  top: 5px;
+  height: 50px;
+  font-size: large;
+  top: 0px;
   position: sticky;
 }
 
-tBody{
-  padding-top: 20px;
+table tbody td{
+  padding: 5px;
 }
 
 .songTable {
   display: inline-block;
   height: 100%;
   width: 100%;
-
 }
 
 .hide {
@@ -122,7 +150,7 @@ th img {
   height: 1em;
 }
 
-*/ .searchResults {
+.searchResults {
   margin-left: 25em;
   border-spacing: 3em;
   display: inline-block;
@@ -143,12 +171,13 @@ table::-webkit-scrollbar {
 }
 
 table::-webkit-scrollbar-track {
-  background: var(--secondary);
+  background: grey;
+  border-radius: 20px;
   /* color of the tracking area */
 }
 
 table::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
+  background-color: var(--secondary);
   /* color of the scroll thumb */
   border-radius: 20px;
   /* roundness of the scroll thumb */
@@ -193,3 +222,44 @@ table::-webkit-scrollbar-thumb {
   to {bottom: 0; opacity: 0;}
 
 } 
+
+#radarChart{
+  margin: 0;
+  padding: 0;
+  border-radius: 1%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  min-height: 600px;
+  max-height: 600px;
+  min-width: 900px;
+
+}
+
+#myChart{
+  min-height: 100%;
+  max-height: 100%;
+}
+
+input[type='text']{
+  
+  justify-self: end;
+  width: 60%;
+  height: 1.2rem;
+}
+
+select{
+  justify-self: end;
+  width: 60%;
+  height: 1.5rem;
+}
+
+.searchGroup{
+  width: 100%;
+  padding: 10px;
+}
+
+.searchGroup[name="basicSongSearchButton"]{
+  text-align: left;
+}
+.searchGroup select{
+  justify-self: end;
+}

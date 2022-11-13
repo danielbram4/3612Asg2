@@ -462,6 +462,7 @@ fetch(api)
             closeBtn.classList.remove("hide")
             browser.classList.add("hide")
             singleSongView.classList.remove("hide")
+            playlistView.classList.add("hide")
 
 
             const songId = e.target.getAttribute("data-song")
@@ -512,15 +513,10 @@ fetch(api)
                      label: 'Song Statistics',
                      data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.analytics.acousticness, song.analytics.liveness, song.analytics.valence],
                      backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        'rgba(255, 140, 80, 0.5)'
                      ],
                      borderColor: [
-                        'white'
+                        'grey'
                      ],
                      borderWidth: 2
                   }]
