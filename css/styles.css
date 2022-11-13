@@ -26,6 +26,11 @@ button {
   padding: .75em 1em;
 }
 
+.addBtn, .removeBtn{
+  padding: 5px 10px;
+  margin: 3px;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -95,7 +100,7 @@ nav {
 .sideBar {
   padding: 10px;
   background: #003f59;
-  border-radius: 1%;
+  border-radius: 5px;
   box-shadow: 0 3px 10px #001315;
   min-height: 40rem;
   max-height: 40rem;
@@ -107,7 +112,7 @@ nav {
 }
 
 table {
-  border-radius: 1%;
+  border-radius: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   min-height: 40rem;
   max-height: 40rem;
@@ -131,6 +136,7 @@ table thead th {
 }
 
 table tbody td{
+  font-size: .8rem;
   padding: 5px;
 }
 

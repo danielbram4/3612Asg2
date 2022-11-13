@@ -321,7 +321,7 @@ fetch(api)
 
       function getAddBtn(song) {
          const addBtn = document.createElement("button")
-         addBtn.classList.add("btn")
+         addBtn.classList.add("addBtn")
          addBtn.setAttribute('id', song.song_id)
          addBtn.textContent = "Add"
 
@@ -330,7 +330,7 @@ fetch(api)
 
       function getRemoveBtn(song) {
          const removeBtn = document.createElement("button")
-         removeBtn.classList.add("btn")
+         removeBtn.classList.add("removeBtn")
          removeBtn.setAttribute('id', song.song_id)
          removeBtn.textContent = "Remove"
 
