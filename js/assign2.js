@@ -79,6 +79,7 @@ fetch(api)
       }
 
       loadTable('songs')
+      sortTitleHandler()
       const browser = document.querySelector("#browseSongsView")
       const singleSongView = document.querySelector("#singleSongView")
       const closeBtn = document.querySelector("#close")
@@ -138,8 +139,19 @@ fetch(api)
 
       const sortTitle = document.querySelector("#sortIconTitle")
 
+      function setIcons(whichIcon){
+         const icons = document.querySelectorAll("#songTable img")
+         const icon = document.querySelector(`#${whichIcon}`)
+         for(let i of icons){
+               i.src = "assets/images/sort-down-solid.svg"
+            }
+         icon.src = "assets/images/sort-up-solid.svg"
+      }
+
       sortTitle.addEventListener("click", sortTitleHandler)
+
       function sortTitleHandler() {
+         setIcons("sortIconTitle")
          songs.sort(function (a, b) {
             if (a.title < b.title) {
                return -1;
@@ -157,6 +169,7 @@ fetch(api)
       const sortArtist = document.querySelector("#sortIconArtist");
       sortArtist.addEventListener("click", sortArtistHandler)
       function sortArtistHandler() {
+         setIcons("sortIconArtist")
          songs.sort(function (a, b) {
             if (a.artist.name < b.artist.name) {
                return -1;
@@ -175,6 +188,7 @@ fetch(api)
       sortPop.addEventListener("click", sortPopHandler)
 
       function sortPopHandler() {
+         setIcons("sortIconPop")
          songs.sort(function (a, b) {
             return a.details.popularity - b.details.popularity;
          })
@@ -188,6 +202,7 @@ fetch(api)
       sortGenre.addEventListener("click", sortGenreHandler)
 
       function sortGenreHandler() {
+         setIcons("sortIconGenre")
          songs.sort(function (a, b) {
             if (a.genre.name < b.genre.name) {
                return -1;
@@ -206,6 +221,7 @@ fetch(api)
       const sortYear = document.querySelector("#sortIconYear")
       sortYear.addEventListener("click", sortYearHandler)
       function sortYearHandler() {
+         setIcons("sortIconYear")
          songs.sort(function (a, b) {
             return a.year - b.year;
          })

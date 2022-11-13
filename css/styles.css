@@ -153,3 +153,8 @@ table::-webkit-scrollbar-thumb {
   border-radius: 20px;
   /* roundness of the scroll thumb */
 }
+
+#radarChart{
+  width: 750px;
+  margin-left: 125px;
+}
