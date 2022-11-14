@@ -469,28 +469,28 @@ fetch(api)
             const song = songs.find(song => song.song_id == songId);
 
             const bpm = document.querySelector("#songInfo ul #bpm")
-            bpm.textContent = "bpm: " + song.details.bpm;
+            bpm.textContent = "BPM: " + song.details.bpm;
 
             const energy = document.querySelector("#songInfo ul #energy")
-            energy.textContent = "energy: " + song.analytics.energy;
+            energy.textContent = "Energy: " + song.analytics.energy;
 
             const danceability = document.querySelector("#songInfo ul #danceability")
-            danceability.textContent = "danceability: " + song.analytics.danceability;
+            danceability.textContent = "Danceability: " + song.analytics.danceability;
 
             const liveness = document.querySelector("#songInfo ul #liveness")
-            liveness.textContent = "liveness: " + song.analytics.liveness;
+            liveness.textContent = "Liveness: " + song.analytics.liveness;
 
             const valence = document.querySelector("#songInfo ul #valence")
-            valence.textContent = "valence: " + song.analytics.valence;
+            valence.textContent = "Valence: " + song.analytics.valence;
 
             const acousticness = document.querySelector("#songInfo ul #acousticness")
-            acousticness.textContent = "acousticness: " + song.analytics.acousticness;
+            acousticness.textContent = "Acousticness: " + song.analytics.acousticness;
 
             const speechiness = document.querySelector("#songInfo ul #speechiness")
-            speechiness.textContent = "speechiness: " + song.analytics.speechiness;
+            speechiness.textContent = "Speechiness: " + song.analytics.speechiness;
 
             const popularity = document.querySelector("#songInfo ul #popularity")
-            popularity.textContent = "popularity: " + song.details.popularity;
+            popularity.textContent = "Popularity: " + song.details.popularity;
 
             const songInfo = document.querySelector("#songInfo p")
             let songMinutes = song.details.duration / 60;
