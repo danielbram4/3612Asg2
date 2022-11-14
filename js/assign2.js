@@ -570,10 +570,15 @@ function mainProgram(songs){
          const infoHeader = document.querySelector("#songInfo h2")
          infoHeader.textContent = `${song.title}-${song.artist.name}`
          let songMinutes = song.details.duration / 60;
-         songMinutes = Math.floor(songMinutes);
+         songMinutes = Math.round(songMinutes);
          let songSeconds = song.details.duration % 60;
+         if(songSeconds > 9){
          songInfo.textContent = `${song.genre.name}, ${song.year}, ${songMinutes}:${songSeconds}`;
+         }else{
+            songInfo.textContent = `${song.genre.name}, ${song.year}, ${songMinutes}:0${songSeconds}`;
+         }
          createRadarGraph(song)
+
       }
    }
 
