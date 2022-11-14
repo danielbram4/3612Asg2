@@ -270,14 +270,12 @@ function mainProgram(songs){
    const creditButton = document.querySelector("#creditButton");
 
    /*
-      Makes it so that a mouseover on the credit button will show a dropdown menu.
+      Makes it so that a mouseover on the credit button will have the dropdown menu disappear after 5 seconds.
    */
    function creditButtonHandler() {
-      let myDropdown = document.querySelector("#x  ");
-      let drop = document.querySelector("#credit");
-      myDropdown.classList.toggle("dropDown-hidden");
-      myDropdown.classList.toggle("dropdown-content");
-      setTimeout(function() { drop.style.display = "none"; }, 2000);
+      let myDropdown = document.querySelector("#credit");
+      myDropdown.style.display = "block";
+      setTimeout(function() { myDropdown.style.display = "none"; }, 5000);
 
    }
 
