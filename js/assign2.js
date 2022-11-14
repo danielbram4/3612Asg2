@@ -493,10 +493,12 @@ fetch(api)
             popularity.textContent = "Popularity: " + song.details.popularity;
 
             const songInfo = document.querySelector("#songInfo p")
+            const header = document.querySelector("#songInfo h2")
+            header.textContent = `${song.title} - ${song.artist.name}`
             let songMinutes = song.details.duration / 60;
             songMinutes = Math.floor(songMinutes);
             let songSeconds = song.details.duration % 60;
-            songInfo.textContent = `${song.title}, ${song.artist.name}, ${song.artist.id}, ${song.genre.name}, ${song.year}, ${songMinutes} minutes and ${songSeconds} seconds`;
+            songInfo.textContent = `${songMinutes}:${songSeconds}, ${song.genre.name}, ${song.year} `;
 
             const radar = document.querySelector("#radarChart")
             radar.innerHTML = "";
