@@ -25,6 +25,7 @@ const playlist = [{
       "acousticness": 5,
       "speechiness": 4
    }
+   
 },
 {
    "song_id": 1171,
@@ -372,7 +373,7 @@ fetch(api)
       */
       function getAddBtn(song) {
          const addBtn = document.createElement("button")
-         addBtn.classList.add("btn")
+         addBtn.classList.add("addBtn")
          addBtn.setAttribute('id', song.song_id)
          addBtn.textContent = "Add"
 
@@ -384,7 +385,7 @@ fetch(api)
       */
       function getRemoveBtn(song) {
          const removeBtn = document.createElement("button")
-         removeBtn.classList.add("btn")
+         removeBtn.classList.add("removeBtn")
          removeBtn.setAttribute('id', song.song_id)
          removeBtn.textContent = "Remove"
 
@@ -531,36 +532,39 @@ fetch(api)
             closeBtn.classList.remove("hide")
             browser.classList.add("hide")
             singleSongView.classList.remove("hide")
+            playlistView.classList.add("hide")
 
 
             const songId = e.target.getAttribute("data-song")
             const song = songs.find(song => song.song_id == songId);
 
             const bpm = document.querySelector("#songInfo ul #bpm")
-            bpm.textContent = "bpm: " + song.details.bpm;
+            bpm.textContent = "BPM: " + song.details.bpm;
 
             const energy = document.querySelector("#songInfo ul #energy")
-            energy.textContent = "energy: " + song.analytics.energy;
+            energy.textContent = "Energy: " + song.analytics.energy;
 
             const danceability = document.querySelector("#songInfo ul #danceability")
-            danceability.textContent = "danceability: " + song.analytics.danceability;
+            danceability.textContent = "Danceability: " + song.analytics.danceability;
 
             const liveness = document.querySelector("#songInfo ul #liveness")
-            liveness.textContent = "liveness: " + song.analytics.liveness;
+            liveness.textContent = "Liveness: " + song.analytics.liveness;
 
             const valence = document.querySelector("#songInfo ul #valence")
-            valence.textContent = "valence: " + song.analytics.valence;
+            valence.textContent = "Valence: " + song.analytics.valence;
 
             const acousticness = document.querySelector("#songInfo ul #acousticness")
-            acousticness.textContent = "acousticness: " + song.analytics.acousticness;
+            acousticness.textContent = "Acousticness: " + song.analytics.acousticness;
 
             const speechiness = document.querySelector("#songInfo ul #speechiness")
-            speechiness.textContent = "speechiness: " + song.analytics.speechiness;
+            speechiness.textContent = "Speechiness: " + song.analytics.speechiness;
 
             const popularity = document.querySelector("#songInfo ul #popularity")
-            popularity.textContent = "popularity: " + song.details.popularity;
+            popularity.textContent = "Popularity: " + song.details.popularity;
 
             const songInfo = document.querySelector("#songInfo p")
+            const header = document.querySelector("#songInfo h2")
+            header.textContent = `${song.title} - ${song.artist.name}`
             let songMinutes = song.details.duration / 60;
             songMinutes = Math.floor(songMinutes);
             let songSeconds = song.details.duration % 60;
