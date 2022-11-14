@@ -598,7 +598,7 @@ function mainProgram(songs){
             labels: ['danceability', 'energy', 'speechiness', 'acousticness', 'liveness', 'valence'],
             color: "white",
             datasets: [{
-               label: 'Song Statistics',
+               label: '',
                data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.analytics.acousticness, song.analytics.liveness, song.analytics.valence],
                backgroundColor: [
                   'rgba(#ff8c50, #ff8c50, #ff8c50, #ff8c50)',
