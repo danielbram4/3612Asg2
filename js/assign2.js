@@ -574,7 +574,6 @@ function mainProgram(songs){
          let songSeconds = song.details.duration % 60;
          songInfo.textContent = `${song.genre.name}, ${song.year}, ${songMinutes}:${songSeconds}`;
          createRadarGraph(song)
-
       }
    }
 
