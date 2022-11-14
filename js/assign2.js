@@ -615,10 +615,11 @@ function mainProgram(songs){
             plugins: {
                title: {
                    display: true,
-                   text: 'Song Statistics',
+                   text: song.title,
                    color: "#ff8c50",
                    font: {
                      size: 25,
+                     family: 'Roboto Mono'
                      
                   }
                }},
