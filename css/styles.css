@@ -22,7 +22,7 @@ button {
   background-color: var(--accent1);
   border: none;
   border-radius: 5px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 3px 10px #001315;
   font-family: 'Roboto Mono', monospace;
   padding: .75em 1em;
 }
@@ -123,7 +123,7 @@ select{
 
 table {
   border-radius: 5px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 3px 10px #001315;
   min-height: 40rem;
   max-height: 40rem;
   position: relative;
