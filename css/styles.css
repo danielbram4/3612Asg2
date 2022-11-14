@@ -27,7 +27,8 @@ button {
   padding: .75em 1em;
 }
 
-.addBtn, .removeBtn{
+.addBtn,
+.removeBtn {
   padding: 5px 10px;
   margin: 3px;
 }
@@ -42,7 +43,7 @@ button {
   position: absolute;
   background-color: var(--secondary);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px #001315;
   z-index: 2;
 }
 
@@ -74,12 +75,13 @@ header h1 {
   display: inline;
 }
 
-h1, h2{
+h1,
+h2 {
   color: var(--headers)
 }
 
-header{
-  height:10%;
+header {
+  height: 10%;
 }
 
 nav {
@@ -107,14 +109,15 @@ nav {
   max-height: 40rem;
 }
 
-select{
+select {
   font-family: 'Roboto Mono', monospace;
   background-color: #003f59;
   color: #ff762d;
   border-radius: 2px;
 }
 
-.buttonBlock, button#clearPlaylist{
+.buttonBlock,
+button#clearPlaylist {
   position: fixed;
   align-self: center;
   margin-top: 400px;
@@ -134,7 +137,7 @@ table {
 table thead th {
   padding: 5px;
   text-align: left;
-  box-shadow: 0 3px 10px -10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 3px 10px -10px #001315;
   opacity: 1;
   background-color: #003f59;
   z-index: 1;
@@ -145,7 +148,7 @@ table thead th {
   position: sticky;
 }
 
-table tbody td{
+table tbody td {
   font-size: .8rem;
   padding: 5px;
 }
@@ -181,100 +184,128 @@ th img {
   cursor: pointer;
 }
 
-table::-webkit-scrollbar, select::-webkit-scrollbar{
+table::-webkit-scrollbar,
+select::-webkit-scrollbar {
   width: 10px;
   /* width of the entire scrollbar */
 }
 
-table::-webkit-scrollbar-track, select::-webkit-scrollbar-track{
+table::-webkit-scrollbar-track,
+select::-webkit-scrollbar-track {
   background: grey;
   border-radius: 20px;
   /* color of the tracking area */
 }
 
-table::-webkit-scrollbar-thumb, select::-webkit-scrollbar-thumb{
+table::-webkit-scrollbar-thumb,
+select::-webkit-scrollbar-thumb {
   background-color: var(--secondary);
   /* color of the scroll thumb */
   border-radius: 20px;
   /* roundness of the scroll thumb */
 }
 
-#radarChart{
+#radarChart {
   width: 750px;
   margin-left: 125px;
 }
 
-#snackbar{
-    display: none;
-    min-width: 250px;
-    margin-left: -125px;
-    background: var(--secondary);
-    color: var(--tertiary);
-    text-align: center;
-    border-radius: 5px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
+#snackbar {
+  display: none;
+  min-width: 250px;
+  margin-left: -125px;
+  background: var(--secondary);
+  color: var(--tertiary);
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
 }
 
 /* KeyFrame and Animation inspiration take from https://www.w3schools.com/css/css3_animations.asp */
 
 #snackbar.show {
-  display:block;
+  display: block;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  box-shadow: 0 3px 10px #001315;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 @keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-} 
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
 
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
 
-} 
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 
-#radarChart{
+}
+
+#radarChart {
   margin: 0;
   padding: 15px;
   border-radius: 1%;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 3px 10px #001315;
   min-height: 600px;
   max-height: 600px;
   min-width: 900px;
 }
 
-#myChart{
+#myChart {
   min-height: 590px;
   max-height: 590px;
 }
 
-input[type='text']{
-  
+input[type='text'] {
+
   justify-self: end;
   width: 60%;
   height: 1.2rem;
 }
 
-select{
+select {
   justify-self: end;
   width: 60%;
   height: 1.5rem;
 }
 
-.searchGroup{
+.searchGroup {
   width: 100%;
   padding: 10px;
 }
 
-.searchGroup[name="basicSongSearchButton"]{
+.searchGroup[name="basicSongSearchButton"] {
   text-align: left;
 }
-.searchGroup select{
+
+.searchGroup select {
   justify-self: end;
+}
+
+footer {
+  margin-top: 100px;
+}
+
+ul {
+  list-style-type: "♫ ";
+  
 }

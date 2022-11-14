@@ -92,7 +92,6 @@ function mainProgram(songs){
    const playlistBtn = document.querySelector("#playlistBtn")
    const playlistView = document.querySelector("#playlistView")
 
-
    const genres = getGenres()
    const artists = getArtists()
 
@@ -278,11 +277,9 @@ function mainProgram(songs){
       setTimeout(function() { myDropdown.style.display = "none"; }, 5000);
 
    }
-
    creditButton.addEventListener("mouseover", creditButtonHandler);
 
    const clearButton = document.querySelector("#clearButton");
-
    /*
       Clears the textbox for title, and sets artist and genre to first option.
    */
@@ -303,11 +300,9 @@ function mainProgram(songs){
       }
 
    }
-
    clearButton.addEventListener("click", resetSearch);
 
    const searchButton = document.querySelector("#searchButton");
-
    /*
       Checks which search method was selected and searches using that criteria.
    */
@@ -538,6 +533,7 @@ function mainProgram(songs){
          closeBtn.classList.remove("hide")
          browser.classList.add("hide")
          singleSongView.classList.remove("hide")
+         playlistView.classList.add("hide")
 
 
          const songId = e.target.getAttribute("data-song")
@@ -563,6 +559,9 @@ function mainProgram(songs){
 
          const speechiness = document.querySelector("#songInfo ul #speechiness")
          speechiness.textContent = "Speechiness: " + song.analytics.speechiness;
+
+         const loudness = document.querySelector("#songInfo ul #loudness")
+         loudness.textContent = "Loudness: " + song.details.loudness
 
          const popularity = document.querySelector("#songInfo ul #popularity")
          popularity.textContent = "Popularity: " + song.details.popularity;
@@ -593,11 +592,11 @@ function mainProgram(songs){
       const myChart = new Chart(ctx, {
          type: 'radar',
          data: {
-            labels: ['danceability', 'energy', 'speechiness', 'acousticness', 'liveness', 'valence'],
+            labels: ['danceability', 'energy', 'speechiness', 'loudness', 'liveness', 'valence'],
             color: "white",
             datasets: [{
                label: '',
-               data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.analytics.acousticness, song.analytics.liveness, song.analytics.valence],
+               data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.details.loudness, song.analytics.liveness, song.analytics.valence],
                backgroundColor: [
                   'rgba(#ff8c50, #ff8c50, #ff8c50, #ff8c50)',
                   'rgba(255, 206, 86, 0.2)',
