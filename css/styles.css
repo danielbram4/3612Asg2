@@ -13,7 +13,7 @@
 body {
   height: 45vw;
   width: 80vw;
-  background: white;
+  background: #003f59;
   font-family: 'Roboto Mono', monospace;
   color: var(--tertiary);
 }
@@ -136,7 +136,7 @@ table thead th {
   text-align: left;
   box-shadow: 0 3px 10px -10px rgb(0 0 0 / 0.2);
   opacity: 1;
-  background-color: white;
+  background-color: #003f59;
   z-index: 1;
   width: 20%;
   height: 50px;

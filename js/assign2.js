@@ -614,6 +614,16 @@ function mainProgram(songs){
             }]
          },
          options: {
+            plugins: {
+               title: {
+                   display: true,
+                   text: 'Song Statistics',
+                   color: "#ff8c50",
+                   font: {
+                     size: 25,
+                     
+                  }
+               }},
             scales: {
                r: {        
                   suggestedMin: 1,
