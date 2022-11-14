@@ -406,7 +406,7 @@ function mainProgram(songs){
    function loadTable(type) {
       if (type == 'songs') {
          const tBody = document.querySelector(".songTable tbody")
-
+         tBody.innerHTML = ""
          for (let song of songs) {
             const tableData = getTableData(song)
             const addBtn = getAddBtn(song)
